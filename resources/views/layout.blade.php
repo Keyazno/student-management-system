@@ -74,16 +74,23 @@
     <div class="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Students</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Teachers</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Enrollment</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/students') }}">Students</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/teachers') }}">Teachers</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/courses') }}">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/enrollments') }}">Enrollment</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/payments') }}">Payment</a></li>
         </ul>
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="main-content">
+        @if(session('success'))
+        <x-alert type="success" :message="session('success')" />
+    @endif
+
+    @if(session('error'))
+        <x-alert type="danger" :message="session('error')" />
+    @endif
         @yield('content')
     </div>
 
